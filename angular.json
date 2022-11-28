@@ -88,6 +88,14 @@
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
+          "configurations": {
+            "production": {
+              "sourceMap": false,
+              "codeCoverage": true,
+              "browsers": "ChromeHeadless",
+              "watch": false
+            }
+          },
           "options": {
             "main": "src/test.ts",
             "polyfills": "src/polyfills.ts",
@@ -103,9 +111,24 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "calypsomtz-director"
+  "defaultProject": "calypsomtz-director",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
