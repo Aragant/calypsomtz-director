@@ -46,7 +46,7 @@ jobs:
         run: |
           npm run test -- --prod
       - name: Angular Deploy gh-pages Actions
-        uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.3.2
+        uses: AhsanAyaz/angular-deploy-gh-pages-actions@0e4f1a953d00116ca38fbf1bcdb37f91923015ef
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }} 
 
