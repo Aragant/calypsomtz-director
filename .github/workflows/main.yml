@@ -1,38 +1,18 @@
-name: Build, Test & Deploy
-
+name: Host Angular app in GitHub 
 on:
   push:
-    branches: [master]
-
+    branches:
+      - master
 jobs:
   build:
-    name: Build & Test
     runs-on: ubuntu-latest
-
-
     steps:
-
-      - name: Cache node modules
-        uses: actions/cache@v1
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-            
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v3.5.1
-          with:
-            node-version: 14.*
-          
-      - name: Run Unit Tests
-        run: ng test
-
-      - name: Lint
-        run: ng lint
-        
-      - name: Build Application
-        run: ng build
-      
-      - name: List Files in Distribution Directory
-        run: ls -R ./dist
+    - uses: actions/checkout@v3
+    - name: Building and Deploying...
+      uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.3.2
+      with:
+        github_access_token: ${{ secrets.ACCESS_TOKEN }} 
+        build_configuration: production 
+        base_href: /calypsomtz-director/  
+        deploy_branch: gh-pages 
+        angular_dist_build_folder: dist/calypsomtz-director 
