@@ -9,12 +9,8 @@ jobs:
     name: Build & Test
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [14.x]
 
     steps:
-      - uses: actions/checkout@v2
 
       - name: Cache node modules
         uses: actions/cache@v1
@@ -25,9 +21,8 @@ jobs:
             ${{ runner.os }}-node-
             
       - name: Setup Node.js environment
-        uses: actions/setup-node@v1.4.2
-        with:
-          node-version: ${{ matrix.node-version }}
+        uses: actions/setup-node@v3.5.1
+
 
       - name: Install Dependencies
         run: npm install
