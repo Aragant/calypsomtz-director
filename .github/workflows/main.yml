@@ -15,13 +15,13 @@ jobs:
         run: npm install
       
       - name: Test
-        run: ng test
+        run: npm test
       
       - name: Lint
-        run: ng lint
+        run: npm lint
         
       - name: Build
-        run: ng build
+        run: npm build
         
       
         
